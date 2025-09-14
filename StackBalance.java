@@ -14,23 +14,15 @@ public class StackBalance{
             throw new NullPointerException("Ingreso no valido");
         }
 
-    
         Stack<Character> pilaChar = new Stack<>(); //Pila que guardara los signos ( { [
-        
-        char[] letras = new char[operation.length()]; //Arreglo que guadara cada caracter de la operacion
-        //Se agrega cada caracter al arreglo
-        for(int i = 0; i <letras.length; i++){
-            //CharAt obtiene un caracter del indice especificado
-            letras[i] = operation.charAt(i);
-        }
 
         /*
          * Se agregan los signos de apertura al la pila, tambien si el signo es de cierre 
          * y la pila vacia es que este no tiene apertura, tambien si el signo de cierre
          * no coincide con el signo de apertura en el tope es que los signos estan desordenados
          */
-        for(int i = 0; i<letras.length; i++){
-            char signo = letras[i];
+        for(int i = 0; i<operation.length(); i++){
+            char signo = operation.charAt(i);
             if(signo == '(' || signo == '[' || signo == '{'){
                 pilaChar.push(signo);
                 
@@ -55,19 +47,6 @@ public class StackBalance{
                    }
             }
         }
-
-        /*
-         * Se comparan los signos de apertura en la pila, con los de cierre, al final de la 
-         * iteracion la pila deberia estar vacia, lo que denota que haya la misma cantidad
-         * de signos de cierre y de apertura
-         */
-        for(int j = 0; j < letras.length; j++){
-            char signo = letras[j];
-            if(signo == ')' || signo == ']' || signo == '}'){
-                pilaChar.pop();
-            }
-        }
-
         return pilaChar.empty();
     }
 
