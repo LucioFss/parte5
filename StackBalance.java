@@ -1,3 +1,4 @@
+
 import java.util.Stack;
 
 public class StackBalance{
@@ -51,9 +52,32 @@ public class StackBalance{
     }
 
     public static void main(String[] args){
+        /*
         System.out.println(isBalance("(3+4) * 8"));
         System.out.println(isBalance("(( 3 + 4 ) * 8 "));
         System.out.println(isBalance(")3+4( * 8"));
+        */
+        PilaArreglo<Integer> pila1 = new PilaArreglo<>();
+        pila1.apilar(12);
+        pila1.apilar(13);
+        pila1.imprimir();
+        System.out.println(pila1.verTope());
+        System.out.println(pila1.esVacia());
+        pila1.desapilar();
+        pila1.imprimir();
+        pila1.vaciar();
+        pila1.imprimir();
+        
+        PilaEnlazada<String> pila2 = new PilaEnlazada<>();
+        pila2.apilar("Camila");
+        pila2.apilar("Celene");
+        pila2.imprimir();
+        System.out.println(pila2.verTope());
+        System.out.println(pila2.esVacia());
+        pila2.desapilar();
+        pila2.imprimir();
+        pila2.vaciar();
+        pila2.imprimir();
     }
 
 }
