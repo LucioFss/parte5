@@ -9,7 +9,7 @@ public class StackBalance{
      * @param operation
      * @return True o false, si la operacion esta correctamente balanceada
      */
-    public static boolean isBalance(String operation){
+    public static boolean isBalanceStack(String operation){
         //Evaluacion de operacion a evalua no valida
         if(operation == null || operation.isBlank()){
             throw new NullPointerException("Ingreso no valido");
@@ -51,6 +51,37 @@ public class StackBalance{
         return pilaChar.empty();
     }
 
+    /**
+     * Mismo emetodo que el anterior pero ahora con una implementacion atravez de PilaArreglo implementada por mi
+     */
+    public static boolean isBalancePilaArreglo(String operation){
+        //Evaluacion de operacion a evalua no valida
+        if(operation == null || operation.isBlank()){
+            throw new NullPointerException("Ingreso no valido");
+        }
+
+        PilaArreglo<Character> pila = new PilaArreglo<>();
+
+        for(int i = 0; i < operation.length(); i++){
+            char signo = operation.charAt(i);
+            if(signo == '(' || signo == '{' || signo == '['){
+                pila.apilar(signo);
+            }else if(signo == ')' || signo == '}' || signo == '}'){
+                if(pila.esVacia()){
+                    return false;
+                }
+                char tope = pila.desapilar();
+                if(signo == ')' && tope != '(' ||
+                   signo == '}' && tope != '{' ||
+                   signo == ']' && tope != '['){
+                    return false;
+                   }
+            }
+        }
+        return pila.esVacia();
+    }
+       
+
     public static void main(String[] args){
         /*
         System.out.println(isBalance("(3+4) * 8"));
@@ -78,6 +109,12 @@ public class StackBalance{
         pila2.imprimir();
         pila2.vaciar();
         pila2.imprimir();
+
+        
+        System.out.println(isBalancePilaArreglo("(3+4) * 8"));
+        System.out.println(isBalancePilaArreglo("(( 3 + 4 ) * 8 "));
+        System.out.println(isBalancePilaArreglo(")3+4( * 8"));
+        
     }
 
 }
