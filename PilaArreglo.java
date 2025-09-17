@@ -1,3 +1,5 @@
+import parte4.ListaArreglo;
+
 /**
  * CLASE QUE IMPLEMENTA UN SIMULACION DE STACK MEDIANTE UNA CLASE LLAMADA ListaArreglo
  */
@@ -19,7 +21,7 @@ public class PilaArreglo<T> implements Pila<T>{
      */
     @Override
     public void apilar(T item) {
-        lista.insertarInicio(item); //Se inserta en el principio de la lista
+        lista.insertarInsertar(item); //Se inserta en el final de la lista
     }
 
     /**
@@ -31,8 +33,8 @@ public class PilaArreglo<T> implements Pila<T>{
         if(lista.esVacia()){
             throw new IndexOutOfBoundsException("Pila vacia");
         }
-        T aux = lista.obtenerPrimero();
-        lista.eliminarPrimero(); //Elimina el primer elemento de la lista
+        T aux = lista.obtenerUltimo();
+        lista.eliminarUltimo(); //Elimina el ultimo elemento de la lista
         return aux;
     }
 
@@ -52,7 +54,7 @@ public class PilaArreglo<T> implements Pila<T>{
     public void vaciar() {
         //Iteracion que elmina primeros elementos hasta que la lista es vacia
         while(!lista.esVacia()){
-            lista.eliminarPrimero(); //Elimina el primer elemento de la lista
+            lista.eliminarUltimo(); //Elimina el primer elemento de la lista
         }
     }
 
@@ -61,7 +63,7 @@ public class PilaArreglo<T> implements Pila<T>{
      */
     @Override
     public T verTope(){
-        return lista.obtenerPrimero(); //Se devuelve el elemento en la primera posicion de la lista
+        return lista.obtenerUltimo(); //Se devuelve el elemento en la ultima posicion de la lista
     }
 
     public void imprimir(){
